@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lộ trình mở Makeup Studio Hà Đông — Bạn MUA</title>
+<style>
+:root {
+  --primary: #1F2937;
+  --primary-soft: #374151;
+  --accent: #D4A574;
+  --accent-dark: #B8895A;
+  --bg: #FFFBEB;
+  --card-bg: #FFFFFF;
+  --success: #047857;
+  --success-bg: #D1FAE5;
+  --warning: #D97706;
+  --warning-bg: #FEF3C7;
+  --danger: #DC2626;
+  --danger-bg: #FEE2E2;
+  --info: #2563EB;
+  --info-bg: #DBEAFE;
+  --border: #E5E7EB;
+  --text: #1F2937;
+  --text-soft: #6B7280;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 16px;
+  padding-bottom: 80px;
+}
+
+header {
+  background: var(--primary);
+  color: white;
+  padding: 14px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.brand {
+  font-size: 17px;
+  font-weight: 600;
+}
+.brand small {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.6);
+  margin-top: 2px;
+}
+.overall-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+}
+.overall-progress .bar {
+  width: 180px;
+  height: 8px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.overall-progress .bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #F0C896);
+  width: 0%;
+  transition: width 0.4s ease;
+  border-radius: 4px;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.hero {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 36px 32px;
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+.hero h1 {
+  font-size: 30px;
+  margin-bottom: 14px;
+  letter-spacing: -0.5px;
+  line-height: 1.3;
+}
+.hero .subtitle {
+  font-size: 16px;
+  color: var(--text-soft);
+  margin-bottom: 24px;
+  max-width: 800px;
+}
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.stat {
+  background: var(--bg);
+  padding: 16px 18px;
+  border-radius: 10px;
+  border-left: 4px solid var(--accent);
+}
+.stat-label {
+  font-size: 11px;
+  color: var(--text-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.3px;
+}
+
+.timeline-nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px 0;
+  margin-bottom: 24px;
+  scrollbar-width: thin;
+}
+.timeline-nav a {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.timeline-nav a:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.phase {
+  background: var(--card-bg);
+  border-radius: 16px;
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+.phase-header {
+  background: linear-gradient(135deg, var(--primary), var(--primary-soft));
+  color: white;
+  padding: 28px;
+}
+.phase-number {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+.phase-header h2 {
+  font-size: 24px;
+  letter-spacing: -0.3px;
+  margin-bottom: 12px;
+}
+.phase-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.phase-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.phase-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.08);
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+.phase-progress .bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.phase-progress .bar-fill {
+  height: 100%;
+  background: var(--accent);
+  width: 0%;
+  transition: width 0.4s ease;
+  border-radius: 4px;
+}
+
+.phase-body {
+  padding: 28px;
+}
+.phase-section {
+  margin-bottom: 24px;
+}
+.phase-section:last-child { margin-bottom: 0; }
+
+.phase-section h3 {
+  font-size: 12px;
+  color: var(--text-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border);
+  font-weight: 600;
+}
+.phase-goal, .phase-deliverable {
+  background: var(--bg);
+  padding: 18px 20px;
+  border-radius: 10px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.phase-deliverable {
+  background: var(--success-bg);
+  border-left: 4px solid var(--success);
+}
+.phase-deliverable strong {
+  color: var(--success);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.task {
+  display: flex;
+  gap: 14px;
+  padding: 16px 18px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.task:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 12px rgba(212, 165, 116, 0.15);
+  transform: translateX(2px);
+}
+.task input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  cursor: pointer;
+  accent-color: var(--success);
+  margin-top: 3px;
+}
+.task-content {
+  flex: 1;
+}
+.task-title {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 6px;
+  color: var(--primary);
+}
+.task input:checked + .task-content .task-title {
+  text-decoration: line-through;
+  color: var(--text-soft);
+}
+.task input:checked + .task-content {
+  opacity: 0.65;
+}
+.task-desc {
+  font-size: 14px;
+  color: var(--text-soft);
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+.task-tip {
+  background: var(--warning-bg);
+  border-left: 3px solid var(--warning);
+  padding: 8px 12px;
+  font-size: 13px;
+  border-radius: 4px;
+  margin-top: 10px;
+  color: #92400E;
+}
+.task-tip strong { color: var(--warning); }
+.task-budget {
+  display: inline-block;
+  background: var(--info-bg);
+  color: var(--info);
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-top: 6px;
+  margin-right: 6px;
+  font-weight: 500;
+}
+.task-week {
+  display: inline-block;
+  background: var(--bg);
+  color: var(--text-soft);
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-top: 6px;
+  margin-right: 6px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+}
+
+.alert-box {
+  background: var(--danger-bg);
+  border-left: 4px solid var(--danger);
+  padding: 14px 18px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.alert-box strong {
+  color: var(--danger);
+}
+
+.controls {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 50;
+}
+.btn {
+  padding: 11px 18px;
+  border: none;
+  border-radius: 10px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 600;
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+.btn-warn {
+  background: white;
+  color: var(--danger);
+  border: 1px solid var(--danger);
+}
+
+.glossary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+}
+.gloss-item {
+  background: var(--bg);
+  padding: 16px 18px;
+  border-radius: 10px;
+  border-left: 3px solid var(--accent);
+}
+.gloss-term {
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+.gloss-def {
+  font-size: 14px;
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font-size: 14px;
+}
+th, td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+th {
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+}
+tr:nth-child(even) td {
+  background: var(--bg);
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  color: var(--primary);
+  letter-spacing: -0.3px;
+}
+
+.callout {
+  background: linear-gradient(135deg, #FFF7E6, #FFFBEB);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 16px 0;
+  border-left: 4px solid var(--accent);
+  font-size: 15px;
+}
+.callout strong { color: var(--accent-dark); }
+
+@media (max-width: 768px) {
+  main { padding: 20px 14px; }
+  .hero { padding: 24px 20px; }
+  .hero h1 { font-size: 22px; }
+  .phase-header { padding: 22px 20px; }
+  .phase-body { padding: 20px; }
+  .controls { bottom: 16px; right: 16px; }
+  .header-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .overall-progress .bar { width: 130px; }
+  .stat-value { font-size: 18px; }
+  .phase-meta { gap: 12px; font-size: 13px; }
+}
+
+.toast {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--success);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 200;
+}
+.toast.show { opacity: 1; }
+
+.checklist-status {
+  display: inline-block;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+  font-weight: 600;
+  background: var(--success-bg);
+  color: var(--success);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      Lộ trình mở Makeup Studio Hà Đông
+      <small>Phiên bản 1.0 — Cập nhật 2026-04-26</small>
+    </div>
+    <div class="overall-progress">
+      <span><span id="overall-done">0</span> / <span id="overall-total">0</span> việc</span>
+      <div class="bar"><div class="bar-fill" id="overall-bar"></div></div>
+      <span id="overall-pct">0%</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <h1>Kế hoạch hành động — Từ hôm nay đến mở studio</h1>
+  <p class="subtitle">
+    Đây là lộ trình từng bước em soạn riêng cho bạn theo kế hoạch tài chính v3 (vốn 200 triệu, mở studio Service-led tại Hà Đông).
+    Bạn không cần biết kinh doanh phức tạp — chỉ cần làm tuần tự từng việc trong checklist. Tick xong việc nào thì đánh dấu — tiến độ tự lưu trên trình duyệt, lần sau mở lại vẫn còn.
+  </p>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-label">Vốn ban đầu</div>
+      <div class="stat-value">200 triệu</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Thời gian đến launch</div>
+      <div class="stat-value">~3 tháng</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Mục tiêu break-even</div>
+      <div class="stat-value">40 ca/tháng</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Số giai đoạn</div>
+      <div class="stat-value">5 phase</div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top: 24px; margin-bottom: 0;">
+    <strong>📌 Cách dùng file này:</strong> Đọc tuần tự từ Phase 0 → Phase 4. Mỗi phase có mục tiêu rõ + danh sách việc cần làm. Tick checkbox khi xong. Nếu bạn không hiểu thuật ngữ nào, kéo xuống mục <strong>"Thuật ngữ"</strong> ở cuối trang.
+  </div>
+</section>
+
+<nav class="timeline-nav">
+  <a href="#phase-0">P0 — Validate</a>
+  <a href="#phase-1">P1 — Setup MB</a>
+  <a href="#phase-2">P2 — Soft launch</a>
+  <a href="#phase-3">P3 — Mở khoá</a>
+  <a href="#phase-4">P4 — Ramp break-even</a>
+  <a href="#numbers">📊 Số liệu key</a>
+  <a href="#glossary">📖 Thuật ngữ</a>
+</nav>
+
+<!-- ================== PHASE 0 ================== -->
+<section class="phase" id="phase-0">
+  <div class="phase-header">
+    <div class="phase-number">PHASE 0</div>
+    <h2>Validate — Chứng minh có khách thật trước khi tiêu vốn</h2>
+    <div class="phase-meta">
+      <span>📅 Tháng 5 — 6/2026</span>
+      <span>⏱ 8 tuần</span>
+      <span>💰 Chi phí: ~10 triệu (lookbook)</span>
+    </div>
+    <div class="phase-progress">
+      <span><span id="p0-done">0</span> / <span id="p0-total">0</span></span>
+      <div class="bar"><div class="bar-fill" id="p0-bar"></div></div>
+      <span id="p0-pct">0%</span>
+    </div>
+  </div>
+  <div class="phase-body">
+
+    <div class="phase-section">
+      <h3>🎯 Mục tiêu giai đoạn</h3>
+      <div class="phase-goal">
+        Bạn chạy makeup tại nhà khách 8 tuần để: (1) <strong>kiểm chứng có thị trường thật</strong> trước khi tiêu 150 triệu thuê và sửa mặt bằng, (2) <strong>build lookbook chuyên nghiệp</strong> để dùng cho marketing, (3) <strong>tích pipeline 5-10 cô dâu Q3 đã đặt cọc</strong> để khi soft launch không bị đói khách. Đây là bước AN TOÀN nhất — nếu không có đặt cọc trong 2 tháng, tạm dừng để xem lại.
+      </div>
+    </div>
+
+    <div class="phase-section">
+      <h3>✅ Deliverable cuối phase</h3>
+      <div class="phase-deliverable">
+        <strong>Phải đạt được trước khi sang Phase 1:</strong>
+        • Tối thiểu 5 cô dâu Q3 đã đặt cọc 30%<br>
+        • Lookbook 30+ ảnh chuyên nghiệp (5-7 mẫu, đa dạng concept)<br>
+        • Fanpage Facebook + Instagram active, có ≥500 follower<br>
+        • Đã chạy 5-10 ca service hoàn chỉnh (có review/feedback)<br>
+        • Hiểu rõ insight 3 đối thủ Hà Đông (giá, dịch vụ, điểm mạnh/yếu)
+      </div>
+    </div>
+
+    <div class="alert-box">
+      <strong>⚠ Cảnh báo quan trọng:</strong> KHÔNG sang Phase 1 (thuê mặt bằng) nếu Phase 0 chưa có ít nhất <strong>5 đơn cô dâu Q3 đã đặt cọc</strong>. Đó là tín hiệu thị trường chưa sẵn sàng — cần dừng lại review trước khi tiêu CAPEX 150 triệu.
+    </div>
+
+    <div class="phase-section">
+      <h3>📋 Việc cần làm (15 việc)</h3>
+      <div class="checklist">
+
+        <label class="task">
+          <input type="checkbox" id="p0-1">
+          <div class="task-content">
+            <div class="task-title">Chuẩn bị bộ kit di động đi nhà khách</div>
+            <div class="task-desc">Foundation 5-7 tone, eyeshadow palette đa dạng, set phấn má, lipstick 8-10 màu, dụng cụ. Đảm bảo bộ này đủ làm 5 cô dâu liên tục mà không cần bổ sung.</div>
+            <span class="task-budget">Cost: 0đ (đã có sẵn)</span>
+            <span class="task-week">Tuần 1</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Mua 1 vali makeup chuyên dụng (~500k-1tr) — gọn nhẹ, dễ mang lên xe máy. Đầu tư 1 lần, dùng dài.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p0-2">
+          <div class="task-content">
+            <div class="task-title">Niêm yết bảng giá theo phương án v3</div>
+            <div class="task-desc">Cô dâu ngày cưới 1.800.000đ • Cô dâu ăn hỏi 1.500.000đ • Kỷ yếu/tiệc 1.000.000đ • Bà sui 1.000.000đ. Có thể giảm 20% cho 3-5 ca đầu để tích testimonial.</div>
+            <span class="task-week">Tuần 1</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Khi giảm giá, gọi rõ "promo khai trương" hoặc "giá giới thiệu" — tránh khách quen mức rẻ rồi mặc cả về sau.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p0-3">
+          <div class="task-content">
+            <div class="task-title">Soạn chính sách đặt cọc 30% cho cô dâu</div>
+            <div class="task-desc">Cô dâu phải chuyển cọc 30% giá khi book — nếu hủy &lt; 7 ngày trước cưới mất cọc. Đây là cách lọc khách nghiêm túc và bảo vệ lịch của bạn.</div>
+            <span class="task-week">Tuần 1</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Soạn 1 đoạn text "Chính sách đặt lịch" copy paste gửi inbox khách sau khi tư vấn xong. Tránh phải gõ lại mỗi lần.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p0-4">
+          <div class="task-content">
+            <div class="task-title">Tạo Fanpage Facebook + Instagram chuyên nghiệp</div>
+            <div class="task-desc">Đặt tên rõ ràng (ví dụ: "Makeup Hà Đông by [Tên bạn]"). Cover ảnh đẹp, ảnh đại diện chuyên nghiệp, info đầy đủ (số điện thoại, khu vực, giá tham khảo).</div>
+            <span class="task-week">Tuần 1</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Username FB và IG để giống nhau (ví dụ @makeup.hadong) để dễ nhớ. Setup luôn link Bio chứa cả 2.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p0-5">
+          <div class="task-content">
+            <div class="task-title">Đăng 8 bài seed nội dung tuần đầu</div>
+            <div class="task-desc">5 bài lookbook cũ + 2 bài giới thiệu dịch vụ + 1 bài review/testimonial khách cũ. Đây là "vũ khí" để tư vấn khách mới (có nội dung để khoe).</div>
+            <span class="task-week">Tuần 1</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Mỗi bài viết caption ngắn, nói rõ "Cô dâu [tên] — ngày cưới [ngày] — gói [tên gói] [giá]". Khách thấy giá rõ ràng dễ inbox hơn.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p0-6">
+          <div class="task-content">
+            <div class="task-title">Inbox 30 khách ruột cũ — giới thiệu studio sắp mở</div>
+            <div class="task-desc">Soạn 1 message ngắn chuẩn gửi tất cả khách cũ: "Em sắp mở studio tại Hà Đông tháng 7-8/2026. Em ưu đãi đặc biệt cho 30 khách ruột chị: giảm 15% gói cô dâu, miễn phí 1 lần thử makeup trước cưới. Chị nào có lịch cuối năm 2026 có thể giữ lịch sớm với em ạ."</div>
+            <span class="task-week">Tuần 1-2</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Đừng spam 30 inbox cùng 1 lúc — gửi 5-7 người/ngày để FB không nghĩ là spam. Mục tiêu: 5-10 người chốt lịch.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p0-7">
+          <div class="task-content">
+            <div class="task-title">Chạy 5-10 ca service tại nhà khách trong 8 tuần</div>
+            <div class="task-desc">Đây là việc trọng tâm nhất của Phase 0. Mỗi ca bạn vừa kiếm tiền (~10-18tr/ca) vừa thu thập insight thực tế (khách Hà Đông quan tâm gì, prefer style nào).</div>
+            <span class="task-week">Tuần 2-8</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Mỗi ca xong, ghi note ngắn: tên khách, gói, ngân sách, có hỏi thêm gì không. Sau 5-10 ca sẽ thấy pattern.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p0-8">
+          <div class="task-content">
+            <div class="task-title">Yêu cầu 100% khách review + tag fanpage</div>
+            <div class="task-desc">Sau mỗi ca, gửi tin nhắn cảm ơn + xin 1 review FB (kèm 1 ảnh chân dung sau makeup). Đây là social proof — khách mới sẽ đọc review trước khi inbox.</div>
+            <span class="task-week">Tuần 2-8</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Gửi luôn link review FB của bạn để khách click 1 phát là review xong. Đừng để họ tự tìm — sẽ quên.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p0-9">
+          <div class="task-content">
+            <div class="task-title">Chụp lookbook chuyên nghiệp (1-2 ngày shoot)</div>
+            <div class="task-desc">Thuê 1 photographer có kinh nghiệm chụp beauty/wedding (~5tr/ngày). Trang điểm cho 5-7 mẫu (free hoặc trả 200k/người), tạo 30-50 ảnh đa dạng concept (nhẹ nhàng / sang trọng / hiện đại / dạ tiệc).</div>
+            <span class="task-budget">Budget: 8 triệu</span>
+            <span class="task-week">Tuần 4-5</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Chụp ở nhà người quen có không gian đẹp (~0đ) hoặc thuê studio chụp 500k/giờ. Tránh trả tiền lookbook quá đắt giai đoạn này.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p0-10">
+          <div class="task-content">
+            <div class="task-title">Mystery shopping 3 đối thủ Hà Đông</div>
+            <div class="task-desc">Gọi điện hoặc inbox 3 fanpage makeup dâu Hà Đông (giả làm cô dâu). Hỏi giá, hỏi quy trình tư vấn, hỏi chính sách touch-up. Ghi lại để hiểu mức độ cạnh tranh.</div>
+            <span class="task-week">Tuần 3</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Tìm 3 đối thủ ở 3 phân khúc: (1) cao cấp 2tr+, (2) trung 1.2-1.5tr, (3) bình dân &lt; 1tr. Để biết bạn đang ở vị trí nào.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p0-11">
+          <div class="task-content">
+            <div class="task-title">Liệt kê 10 wedding planner Hà Đông để hợp tác</div>
+            <div class="task-desc">Wedding planner thường giới thiệu makeup cho cô dâu, ăn hoa hồng 10-15%. Đây là kênh "bán hàng B2B" cực kỳ hiệu quả — 1 planner có thể đẩy về 5-10 cô dâu/tháng.</div>
+            <span class="task-week">Tuần 5-6</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Search Google Maps "wedding planner Hà Đông" hoặc inbox fanpage chuyên đám cưới. Đề xuất hoa hồng 10% cho 3 đơn đầu, 15% từ đơn thứ 4.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p0-12">
+          <div class="task-content">
+            <div class="task-title">Lập file Google Sheet quản lý khách (CRM đơn giản)</div>
+            <div class="task-desc">Cột: Tên • SĐT • Ngày cưới • Gói chốt • Cọc đã trả • Note. Đây là cơ sở dữ liệu khách từ ngày 1 — sau này có hệ thống chuyên nghiệp hơn vẫn dùng được.</div>
+            <span class="task-budget">Cost: 0đ (Google Sheet free)</span>
+            <span class="task-week">Tuần 1</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Em có thể giúp tạo template Sheet — bảo anh Quang nói với em là "tạo Sheet CRM cho bạn MUA".</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p0-13">
+          <div class="task-content">
+            <div class="task-title">Đếm pipeline cuối tuần 4 — review tiến độ</div>
+            <div class="task-desc">Tổng kết sau 4 tuần: số lead inbox, số người đã book và cọc, số ca đã hoàn thành. Nếu &lt; 3 cô dâu Q3 đặt cọc → cần điều chỉnh giá hoặc message marketing.</div>
+            <span class="task-week">Tuần 4</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Báo anh Quang xem số liệu — anh sẽ phản biện và đề xuất điều chỉnh nếu pipeline yếu.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p0-14">
+          <div class="task-content">
+            <div class="task-title">Quay 5-7 video TikTok seed (transformation + BTS)</div>
+            <div class="task-desc">Mỗi video 15-30 giây: trước/sau makeup, hậu trường (BTS) buổi cưới, tip nhỏ về giữ makeup lâu. TikTok là kênh kéo lead RẺ NHẤT cho makeup hiện nay.</div>
+            <span class="task-week">Tuần 5-7</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Quay bằng điện thoại đủ. Dùng nhạc trending. Đừng cần edit cầu kỳ — content chân thực hơn content fancy.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p0-15">
+          <div class="task-content">
+            <div class="task-title">Đếm pipeline cuối tuần 8 — quyết định GO / NO-GO</div>
+            <div class="task-desc">Cuối phase 0: Có ≥ 5 cô dâu Q3 đã cọc → ✅ GO (sang Phase 1). Có 0-4 cô dâu cọc → ❌ NO-GO (review pricing, vị trí, message). Quyết định cùng anh Quang.</div>
+            <span class="task-week">Tuần 8 (cuối phase)</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Quyết định này KHÔNG được trì hoãn. Nếu thị trường không sẵn sàng, dừng tốt hơn là tiêu 150tr CAPEX để rồi đắp chiếu studio.</div>
+          </div>
+        </label>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== PHASE 1 ================== -->
+<section class="phase" id="phase-1">
+  <div class="phase-header">
+    <div class="phase-number">PHASE 1</div>
+    <h2>Setup mặt bằng + Branding (Biến studio thành thật)</h2>
+    <div class="phase-meta">
+      <span>📅 Tháng 6 — 7/2026</span>
+      <span>⏱ 6 tuần</span>
+      <span>💰 Chi phí: 200 triệu (vốn ban đầu)</span>
+    </div>
+    <div class="phase-progress">
+      <span><span id="p1-done">0</span> / <span id="p1-total">0</span></span>
+      <div class="bar"><div class="bar-fill" id="p1-bar"></div></div>
+      <span id="p1-pct">0%</span>
+    </div>
+  </div>
+  <div class="phase-body">
+
+    <div class="phase-section">
+      <h3>🎯 Mục tiêu giai đoạn</h3>
+      <div class="phase-goal">
+        Tìm + thuê + cải tạo mặt bằng 60m² tại Hà Đông + tuyển team 3 người + làm xong branding + đăng ký pháp lý. Cuối phase studio sẵn sàng đón khách thật. Đây là phase tiêu vốn nhiều nhất (200tr) — phải làm chậm và kỹ.
+      </div>
+    </div>
+
+    <div class="phase-section">
+      <h3>✅ Deliverable cuối phase</h3>
+      <div class="phase-deliverable">
+        <strong>Phải đạt được trước khi sang Phase 2:</strong>
+        • Mặt bằng đã thuê + cải tạo xong, chụp ảnh check-in được<br>
+        • 5 bàn gương + ánh sáng + điều hoà đã lắp đặt<br>
+        • Logo, lookbook, video TikTok, landing page hoàn thành<br>
+        • Đã đăng ký HKDCT (Hộ Kinh Doanh Cá Thể)<br>
+        • Tuyển xong 2 người (1 Sale+MUA + 1 MUA chuyên), bạn ấy là Quản lý chung
+      </div>
+    </div>
+
+    <div class="phase-section">
+      <h3>📋 Việc cần làm (18 việc)</h3>
+      <div class="checklist">
+
+        <label class="task">
+          <input type="checkbox" id="p1-1">
+          <div class="task-content">
+            <div class="task-title">Lập danh sách 10-15 mặt bằng ứng viên Hà Đông</div>
+            <div class="task-desc">Tìm trên Chợ Tốt, Batdongsan, FB Marketplace, đi xe máy khảo sát các phố như Tô Hiệu, Quang Trung, Lê Văn Lương, Mỗ Lao. Tiêu chí: 60m² ± 10m² • Tầng 1 hoặc tầng 2 thoáng • Có chỗ đỗ xe máy • Gần đường lớn.</div>
+            <span class="task-week">Tuần 1</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Ưu tiên MB tầng 1 mặt phố nhỏ — khách makeup không quan tâm "view đẹp", quan trọng là dễ tìm + đỗ xe tiện.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p1-2">
+          <div class="task-content">
+            <div class="task-title">Khảo sát thực tế 5-7 mặt bằng tốt nhất</div>
+            <div class="task-desc">Đến tận nơi xem. Chấm điểm theo bảng: Giá thuê (1-10) • Vị trí (1-10) • Tiện ích sẵn có (1-10) • Ánh sáng tự nhiên (1-10) • An ninh (1-10). Chọn MB điểm cao nhất.</div>
+            <span class="task-week">Tuần 1-2</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Đi 2 lần khác nhau (sáng + tối) để check ánh sáng + an ninh. Chụp ảnh + quay video để so sánh sau.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p1-3">
+          <div class="task-content">
+            <div class="task-title">Deal giá thuê xuống dưới 10 triệu/tháng (target)</div>
+            <div class="task-desc">Khi tìm được MB ưng ý, NEGOTIATE — đừng nhận giá đầu. Lý do để hạ: cam kết HĐ dài (3-5 năm), trả cọc nhanh, tự sửa không yêu cầu chủ nhà sửa. Mục tiêu: hạ 10-15% so giá ban đầu.</div>
+            <span class="task-week">Tuần 2</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Đề xuất "Em ký 3 năm, trả cọc đủ 3 tháng ngay, anh/chị giảm 1tr/tháng được không?" — hợp lý cho cả 2 bên.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p1-4">
+          <div class="task-content">
+            <div class="task-title">Ký hợp đồng thuê + chuyển 30 triệu cọc</div>
+            <div class="task-desc">Đọc kỹ HĐ trước khi ký, đặc biệt: điều khoản tăng giá hàng năm (max 5%/năm), điều khoản thoát HĐ trước hạn, ai chịu sửa khi hỏng (điện, nước, mái). Cọc 30tr (3 tháng) — chuyển khoản có biên lai.</div>
+            <span class="task-budget">Cost: 30 triệu (cọc, hoàn lại cuối HĐ)</span>
+            <span class="task-week">Tuần 2-3</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Nhờ luật sư hoặc anh Quang đọc HĐ trước khi ký (1 lần ~500k-1tr) — phòng tránh điều khoản bất lợi.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p1-5">
+          <div class="task-content">
+            <div class="task-title">Thuê designer làm bản vẽ thi công 2D</div>
+            <div class="task-desc">Bản vẽ phân khu: 5 stations bàn gương + 1 bàn master + khu chờ + WC. Có cả phương án màu sơn, ánh sáng, vị trí ổ điện.</div>
+            <span class="task-budget">Budget: 1.5 triệu</span>
+            <span class="task-week">Tuần 3</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Tìm designer freelance trên FB nhóm "Thiết kế nội thất Hà Nội" — giá 1-1.5tr cho bản 2D đơn giản.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p1-6">
+          <div class="task-content">
+            <div class="task-title">Thi công cải tạo mặt bằng (60tr — 4 tuần)</div>
+            <div class="task-desc">Sơn 2 lớp theo brand color (chọn 1 màu chủ + 1 màu trang trí), lát sàn nhẹ (gạch hoặc vinyl), phân khu bằng vách ngăn nhẹ, lắp ổ điện cho 5 stations. Thuê 1 đội thi công uy tín.</div>
+            <span class="task-budget">Budget: 60 triệu</span>
+            <span class="task-week">Tuần 3-6</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Yêu cầu đội thi công cam kết deadline + có phạt nếu trễ. Hợp đồng rõ ràng, trả tiền theo tiến độ (30% trước, 40% giữa, 30% nghiệm thu).</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p1-7">
+          <div class="task-content">
+            <div class="task-title">Mua + lắp 5 bàn gương đèn LED + 6 ghế MUA</div>
+            <div class="task-desc">5 stations cho team makeup + 1 bàn master cho bạn. Bàn gương ~4-5tr/cái, ghế MUA điều chỉnh được ~2-3tr/cái. Mua tại các shop chuyên (Hai Bà Trưng, Cầu Giấy có nhiều).</div>
+            <span class="task-budget">Budget: 28 triệu</span>
+            <span class="task-week">Tuần 5-6</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Đợt đầu chỉ cần 3 stations (~17tr), khi nào team đủ 5 người mới mua thêm 2 — tiết kiệm 11tr không bị nằm chết.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p1-8">
+          <div class="task-content">
+            <div class="task-title">Mua + setup ánh sáng studio</div>
+            <div class="task-desc">1 LED panel 5500K (chuẩn ánh sáng makeup) + 2 ring light di động cho photo touch-up tại bàn gương. Ánh sáng đúng chuẩn = makeup ra ảnh đẹp = khách hài lòng.</div>
+            <span class="task-budget">Budget: 15 triệu</span>
+            <span class="task-week">Tuần 5-6</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Test ánh sáng 5500K (ánh sáng ban ngày) — không dùng đèn vàng vì sẽ làm da khách trông lệch màu, makeup ra khác hẳn.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p1-9">
+          <div class="task-content">
+            <div class="task-title">Lắp điều hoà phụ + camera CCTV + biển hiệu</div>
+            <div class="task-desc">Nếu MB chưa có điều hoà đủ tải → mua thêm 1 cục 18.000 BTU. Camera 4 mắt (~3tr trọn gói lắp). Biển hiệu ngoài cửa (3-5tr — chữ + LED).</div>
+            <span class="task-budget">Budget: 15 triệu</span>
+            <span class="task-week">Tuần 5-6</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Biển hiệu là "marketing offline" — khách đi qua lần 1 không inbox, nhưng lần 5 sẽ nhớ tên. Đầu tư biển đẹp.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p1-10">
+          <div class="task-content">
+            <div class="task-title">Thuê designer làm bộ nhận diện brand</div>
+            <div class="task-desc">Logo + palette màu + font chữ + name card + template post fanpage. Thuê designer freelance (~3-4tr) — cho 5-7 brief reference, chọn 1 phương án ưng nhất.</div>
+            <span class="task-budget">Budget: 4 triệu</span>
+            <span class="task-week">Tuần 6</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Đặt tên brand đơn giản, dễ nhớ. Nếu chưa nghĩ ra, có thể dùng tên cá nhân + "Studio" / "Beauty" — vd "Linh Beauty Studio".</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p1-11">
+          <div class="task-content">
+            <div class="task-title">Chụp lookbook chuyên nghiệp tại studio mới (30-50 ảnh)</div>
+            <div class="task-desc">Sau khi MB sửa xong, chụp lookbook tại studio mới (background = không gian studio). Khác với lookbook tại nhà ở P0 — đây là asset chính cho fanpage và website.</div>
+            <span class="task-budget">Budget: 8 triệu</span>
+            <span class="task-week">Tuần 6</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Mời 5-7 mẫu (nên có cô dâu thật + KOL nhỏ Hà Đông). Cho mẫu test makeup miễn phí + được giữ ảnh — họ sẽ post lên FB họ giúp bạn.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p1-12">
+          <div class="task-content">
+            <div class="task-title">Quay 3-5 video TikTok mở studio</div>
+            <div class="task-desc">Video tour studio + quy trình makeup tại bàn gương + transformation cô dâu tại studio. Mục tiêu: tạo "wow factor" để TikTok push organic.</div>
+            <span class="task-budget">Budget: 5 triệu</span>
+            <span class="task-week">Tuần 6</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Thuê 1 bạn quay phim trẻ (~500k-1tr/ngày) — họ biết trend TikTok hơn studio chuyên nghiệp.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p1-13">
+          <div class="task-content">
+            <div class="task-title">Build landing page + form booking đơn giản</div>
+            <div class="task-desc">Trang web 1 trang: showcase lookbook + giới thiệu dịch vụ + form đặt lịch (tên, SĐT, ngày dự kiến). Dùng nền tảng no-code: Wix, Webflow, hoặc Sapo.</div>
+            <span class="task-budget">Budget: 3 triệu</span>
+            <span class="task-week">Tuần 6</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Mua tên miền .com hoặc .vn (~250k/năm). Bio FB/IG link đến trang này — chuyên nghiệp hơn link inbox.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p1-14">
+          <div class="task-content">
+            <div class="task-title">Đăng ký Hộ Kinh Doanh Cá Thể (HKDCT) tại UBND Hà Đông</div>
+            <div class="task-desc">Hồ sơ: Đơn đăng ký (mẫu UBND có sẵn) + CMND/CCCD + HĐ thuê MB. Lệ phí ~150k. Nhận giấy phép sau 3-5 ngày làm việc. Sau đó đăng ký mã số thuế tại Chi cục thuế quận.</div>
+            <span class="task-budget">Cost: 1 triệu (lệ phí + dịch vụ)</span>
+            <span class="task-week">Tuần 6</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Có thể thuê dịch vụ làm hồ sơ (~500k-1tr) nếu không quen — tiết kiệm thời gian. Tìm trên Google "dịch vụ đăng ký HKDCT Hà Đông".</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p1-15">
+          <div class="task-content">
+            <div class="task-title">Đăng tin tuyển 1 Sale + MUA part-time</div>
+            <div class="task-desc">Đăng FB nhóm "Việc làm Hà Đông", "Tuyển dụng MUA Hà Nội". Mô tả: lương cứng 6-7tr + commission 10% mỗi ca tự làm. Yêu cầu: có kinh nghiệm 1 năm + biết tư vấn.</div>
+            <span class="task-week">Tuần 5-6</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Phỏng vấn 5-10 ứng viên — chọn người có thái độ tốt thay vì kỹ năng cao. Thái độ training được, kỹ năng cũng vậy.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p1-16">
+          <div class="task-content">
+            <div class="task-title">Đăng tin tuyển 1 MUA chuyên</div>
+            <div class="task-desc">Đăng cùng kênh trên. Mô tả: lương cứng 5-6tr + commission 10% mỗi ca tự làm. Yêu cầu: có kinh nghiệm makeup dâu, có portfolio.</div>
+            <span class="task-week">Tuần 5-6</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Mùa cao điểm cưới (Q4) thiếu MUA → có thể không tuyển được người giỏi. Tuyển sớm + giữ lương cạnh tranh.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p1-17">
+          <div class="task-content">
+            <div class="task-title">Setup tools vận hành (CRM, lịch booking, kế toán cơ bản)</div>
+            <div class="task-desc">CRM: Google Sheet hoặc Pancake Lite (free). Lịch booking: Google Calendar share cho team. Kế toán: ghi sổ Excel theo ngày — thu/chi/ghi chú.</div>
+            <span class="task-budget">Budget: 1 triệu (Canva pro + công cụ)</span>
+            <span class="task-week">Tuần 6</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Đừng đầu tư phần mềm phức tạp ngay — Google + Excel đủ cho 12 tháng đầu. Khi nào lên 100+ ca/tháng mới cần CRM chuyên.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p1-18">
+          <div class="task-content">
+            <div class="task-title">Tổ chức "khai trương nhỏ" mời 30 khách ruột + KOL Hà Đông</div>
+            <div class="task-desc">Cuối phase 1, mời khách ruột + 5-10 KOL nhỏ Hà Đông (3-10k follower) đến tham quan studio mới. Ưu đãi 20% gói cô dâu cho ai book trong 7 ngày. Chuẩn bị 1 ít trà bánh nhẹ.</div>
+            <span class="task-budget">Budget: 2 triệu (trà bánh, quà nhỏ)</span>
+            <span class="task-week">Tuần 6 (cuối)</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> KOL nhỏ Hà Đông sẽ post story/check-in giúp bạn — đó là "free marketing" giá trị nhất.</div>
+          </div>
+        </label>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== PHASE 2 ================== -->
+<section class="phase" id="phase-2">
+  <div class="phase-header">
+    <div class="phase-number">PHASE 2</div>
+    <h2>Soft Launch — Mở cửa nhận khách thật</h2>
+    <div class="phase-meta">
+      <span>📅 Tháng 8/2026</span>
+      <span>⏱ 4 tuần</span>
+      <span>🎯 Mục tiêu: 15-20 ca service tháng đầu</span>
+    </div>
+    <div class="phase-progress">
+      <span><span id="p2-done">0</span> / <span id="p2-total">0</span></span>
+      <div class="bar"><div class="bar-fill" id="p2-bar"></div></div>
+      <span id="p2-pct">0%</span>
+    </div>
+  </div>
+  <div class="phase-body">
+
+    <div class="phase-section">
+      <h3>🎯 Mục tiêu giai đoạn</h3>
+      <div class="phase-goal">
+        Mở cửa nhận khách đã book sẵn từ Phase 0 + chạy ads kéo khách mới. Cuối tháng đạt 15-20 ca service (~25-30 triệu doanh thu). Quan trọng nhất: <strong>vận hành mượt</strong> — không lỗi tiếp khách, không trễ giờ, không sai gói. Mỗi khách rời studio HÀI LÒNG sẽ đẻ ra 2-3 khách giới thiệu trong 6 tháng tiếp theo.
+      </div>
+    </div>
+
+    <div class="phase-section">
+      <h3>✅ Deliverable cuối phase</h3>
+      <div class="phase-deliverable">
+        <strong>Phải đạt được trước khi sang Phase 3:</strong>
+        • 15-20 ca service hoàn thành tháng 1<br>
+        • Doanh thu ~25-30 triệu (60-80% CAPEX 1 tháng)<br>
+        • SOP tiếp khách + SOP touch-up đã viết và team đã thuộc<br>
+        • Có ≥ 5 khách review 5 sao trên Google Maps<br>
+        • Hiểu CAC (chi phí có 1 khách) qua FB ads = bao nhiêu
+      </div>
+    </div>
+
+    <div class="phase-section">
+      <h3>📋 Việc cần làm (12 việc)</h3>
+      <div class="checklist">
+
+        <label class="task">
+          <input type="checkbox" id="p2-1">
+          <div class="task-content">
+            <div class="task-title">Soạn SOP tiếp khách dâu (quy trình chuẩn từ inbox đến hậu mãi)</div>
+            <div class="task-desc">7 bước: (1) Reply inbox &lt; 30 phút, (2) Tư vấn gói + giá rõ, (3) Hẹn xem studio, (4) Chốt + lấy cọc 30%, (5) Thử makeup trước cưới (30 ngày), (6) Ngày cưới makeup + touch-up, (7) Hậu mãi xin review.</div>
+            <span class="task-week">Tuần 1</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> SOP viết xong in ra dán bàn lễ tân. Team mới đến đọc 30 phút là làm được — không phụ thuộc bạn.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p2-2">
+          <div class="task-content">
+            <div class="task-title">Soạn SOP touch-up cho cô dâu</div>
+            <div class="task-desc">Quy trình giờ G ngày cưới: (1) Túi touch-up đầy đủ (foundation, son, phấn), (2) Lịch trình đến nhà cô dâu, (3) Thời gian dặm tại tiệc, (4) Liên lạc back-up nếu kẹt xe. Đảm bảo 100% cô dâu được dặm lại 1-2 lần trong ngày.</div>
+            <span class="task-week">Tuần 1</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Touch-up là "wow moment" — cô dâu nhớ MUA suốt đời nếu được chăm sóc tốt ở khoảnh khắc căng thẳng nhất ngày cưới.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p2-3">
+          <div class="task-content">
+            <div class="task-title">Tổ chức training team 1 ngày trước khi mở cửa</div>
+            <div class="task-desc">Dạy SOP cho 2 nhân viên mới + bạn ấy. Demo 1 ca tiếp khách giả. Test kiến thức bằng tình huống: "khách hỏi giá gói cao hơn ngân sách họ → trả lời sao?".</div>
+            <span class="task-week">Tuần 1 (trước khi mở)</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Training kỹ ngày 1 tiết kiệm 100 lần "sửa lỗi" về sau. Quay video buổi training để ai vào sau xem lại.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p2-4">
+          <div class="task-content">
+            <div class="task-title">Liên hệ 5-10 khách đã đặt cọc Phase 0 — confirm lịch</div>
+            <div class="task-desc">Gọi điện hoặc inbox từng khách đã cọc Q3, confirm địa điểm mới (studio Hà Đông), gửi vị trí Google Maps, hỏi có cần hỗ trợ gì thêm không. Thể hiện sự chuyên nghiệp.</div>
+            <span class="task-week">Tuần 1</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Inbox kèm 1 ảnh studio mới + thông tin khai trương — khách thấy bạn đầu tư nghiêm túc, càng tin tưởng.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p2-5">
+          <div class="task-content">
+            <div class="task-title">Chạy chiến dịch Facebook Ads Lead Generation</div>
+            <div class="task-desc">Ngân sách M2: 12 triệu. Chạy 2 campaign: (1) Lead form thu inbox cô dâu Q4, (2) Reach + frequency cho fanpage giới thiệu studio. Targeting: nữ 22-35, sống tại Hà Đông + 5km.</div>
+            <span class="task-budget">Budget: 12 triệu</span>
+            <span class="task-week">Tuần 1-4</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Nếu chưa quen FB ads, thuê freelancer 2tr/tháng để chạy giúp. Đừng tự chạy sai → đốt tiền không hiệu quả.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p2-6">
+          <div class="task-content">
+            <div class="task-title">Đăng ký Google My Business + xin review</div>
+            <div class="task-desc">Đăng ký studio trên Google Maps (free). Khi khách đến studio, xin họ review trên Google Maps tại chỗ (tặng 1 son nhỏ làm cảm ơn). Mục tiêu cuối tháng: 5+ review 5 sao.</div>
+            <span class="task-week">Tuần 1</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Google Map review quan trọng hơn FB review — khách Hà Đông search "makeup gần đây" trên Google sẽ ra studio mình đầu tiên.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p2-7">
+          <div class="task-content">
+            <div class="task-title">Hệ thống ghi nhận lead inbox + KPI hàng ngày</div>
+            <div class="task-desc">Mỗi ngày sale phải ghi: số inbox mới, số inbox đã reply, số đã hẹn xem studio, số đã chốt cọc. Cuối tuần tổng kết tỷ lệ chuyển đổi (inbox → chốt = bao nhiêu %).</div>
+            <span class="task-week">Tuần 1-4</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Mục tiêu chuyển đổi: inbox → tư vấn = 60%. Tư vấn → chốt cọc = 35%. Tổng inbox → chốt = ~20%.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p2-8">
+          <div class="task-content">
+            <div class="task-title">Daily ops: nhận khách + post photo lên FB/IG mỗi ngày</div>
+            <div class="task-desc">Sau mỗi ca makeup, chụp 2-3 ảnh đẹp + 1 story behind-the-scene. Post ngay trong ngày để feed luôn fresh. Caption ngắn: tên cô dâu + gói + ngày cưới.</div>
+            <span class="task-week">Tuần 1-4 (mỗi ngày)</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Studio không post = khách nghĩ "studio này chết rồi". Daily content giữ độ "sống" của brand.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p2-9">
+          <div class="task-content">
+            <div class="task-title">Test 3 mức promotion khác nhau cho khách mới</div>
+            <div class="task-desc">Tuần 1-2: giảm 10% cho cô dâu book trong 7 ngày. Tuần 3: combo "cô dâu + bà sui" giảm 200k. Tuần 4: tặng buổi thử makeup miễn phí cho khách đặt cưới Q4. So sánh hiệu quả.</div>
+            <span class="task-week">Tuần 1-4</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Ghi lại promotion nào kéo khách nhiều nhất → dùng làm chuẩn cho tháng sau.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p2-10">
+          <div class="task-content">
+            <div class="task-title">Liên hệ + chốt hợp tác với 3-5 wedding planner Hà Đông</div>
+            <div class="task-desc">Liên hệ 10 wedding planner đã list ở P0. Mời 3-5 người đến tham quan studio. Đề xuất hoa hồng 10-15% cho cô dâu họ giới thiệu. Ký thỏa thuận đơn giản (không cần luật sư).</div>
+            <span class="task-week">Tuần 2-3</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Wedding planner biết khách trước cưới 6-12 tháng → họ giới thiệu cho cô dâu Q4-Q1 — đúng mùa cao điểm.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p2-11">
+          <div class="task-content">
+            <div class="task-title">Ghi sổ kế toán hàng ngày — thu + chi</div>
+            <div class="task-desc">Excel đơn giản: cột Ngày, Loại (thu/chi), Mô tả, Số tiền, Phương thức (tiền mặt/CK). Cuối tuần tính tổng. Cuối tháng so sánh với mục tiêu.</div>
+            <span class="task-week">Tuần 1-4 (hàng ngày)</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Đừng để dồn cuối tháng — sẽ quên + sai. Em có thể giúp tạo template Excel kế toán nếu bạn cần.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p2-12">
+          <div class="task-content">
+            <div class="task-title">Tổng kết tháng đầu — review với anh Quang</div>
+            <div class="task-desc">Cuối tuần 4: tổng hợp doanh thu, số ca, NPS khách (xin chấm 1-10 mức hài lòng), số inbox vs số chốt, CAC qua FB ads. Họp với anh Quang để điều chỉnh chiến lược tháng 2.</div>
+            <span class="task-week">Tuần 4 (cuối phase)</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Báo cáo bằng số liệu cụ thể — không nói "ổn", "tạm tốt". Phải có con số: doanh thu X tr, số ca Y, NPS Z/10.</div>
+          </div>
+        </label>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== PHASE 3 ================== -->
+<section class="phase" id="phase-3">
+  <div class="phase-header">
+    <div class="phase-number">PHASE 3</div>
+    <h2>Mở khoá học đầu tiên — Mở rộng nguồn thu</h2>
+    <div class="phase-meta">
+      <span>📅 Tháng 9 — 10/2026</span>
+      <span>⏱ 8 tuần</span>
+      <span>🎯 Mục tiêu: Lớp đầu tiên 1-2 học viên</span>
+    </div>
+    <div class="phase-progress">
+      <span><span id="p3-done">0</span> / <span id="p3-total">0</span></span>
+      <div class="bar"><div class="bar-fill" id="p3-bar"></div></div>
+      <span id="p3-pct">0%</span>
+    </div>
+  </div>
+  <div class="phase-body">
+
+    <div class="phase-section">
+      <h3>🎯 Mục tiêu giai đoạn</h3>
+      <div class="phase-goal">
+        Sau khi service ổn định ở Phase 2, mở khoá makeup cá nhân T01 (3 triệu/khoá 5 buổi). Cuối phase có lớp đầu tiên 1-2 học viên — chạy thử để rút kinh nghiệm trước khi marketing rộng hơn ở Phase 4.
+      </div>
+    </div>
+
+    <div class="phase-section">
+      <h3>✅ Deliverable cuối phase</h3>
+      <div class="phase-deliverable">
+        <strong>Phải đạt được trước khi sang Phase 4:</strong>
+        • Giáo trình 5 buổi đã hoàn chỉnh, có handout cho học viên<br>
+        • 1 lớp đầu tiên đã hoàn thành (1-2 học viên)<br>
+        • Có 2-3 testimonial học viên đầu (ảnh trước/sau, video)<br>
+        • Pricing và quy trình đã được test, sẵn sàng scale lên 2 khoá/tháng từ Phase 4
+      </div>
+    </div>
+
+    <div class="phase-section">
+      <h3>📋 Việc cần làm (10 việc)</h3>
+      <div class="checklist">
+
+        <label class="task">
+          <input type="checkbox" id="p3-1">
+          <div class="task-content">
+            <div class="task-title">Soạn giáo trình khoá makeup cá nhân (5 buổi)</div>
+            <div class="task-desc">Buổi 1: Skincare + chuẩn bị nền. Buổi 2: Eyebrow + base makeup. Buổi 3: Mắt cơ bản. Buổi 4: Contour + má hồng + lipstick. Buổi 5: Look đi làm + look đi tiệc + thực hành.</div>
+            <span class="task-week">Tuần 1-2</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> In handout cho mỗi buổi (1-2 trang) — học viên có cái cầm về xem lại. Thêm value mà chi phí gần như 0.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p3-2">
+          <div class="task-content">
+            <div class="task-title">Quay video teaser khoá học cho TikTok</div>
+            <div class="task-desc">3 video 30 giây: (1) "5 lỗi tự makeup ai cũng mắc", (2) "Buổi 1 khoá học chúng tôi dạy gì", (3) "Học viên trước/sau 5 buổi". Mục tiêu organic reach trên TikTok.</div>
+            <span class="task-week">Tuần 2</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Video khoá học không cần fancy — chân thực + giá trị thông tin cao là trend.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p3-3">
+          <div class="task-content">
+            <div class="task-title">Build landing page khoá học + form đăng ký</div>
+            <div class="task-desc">Trang riêng cho khoá học: ai học được + giáo trình + giảng viên + lịch + giá + form đăng ký. Tích hợp link với fanpage và bio Instagram.</div>
+            <span class="task-week">Tuần 2</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Landing page có CTA rõ "Đăng ký tư vấn miễn phí 15 phút" — khách e ngại commit 3tr ngay, nhưng dễ đăng ký 1 cuộc tư vấn miễn phí.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p3-4">
+          <div class="task-content">
+            <div class="task-title">Chạy ads target 18-35 nữ Hà Đông quan tâm beauty</div>
+            <div class="task-desc">Ngân sách 4-5 triệu trong 4 tuần. Quảng bá khoá học. Targeting interest: makeup, beauty, skincare. Thử 3 creative khác nhau, giữ creative chạy tốt nhất.</div>
+            <span class="task-budget">Budget: 5 triệu (đã trong M3 marketing 12tr)</span>
+            <span class="task-week">Tuần 2-5</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Khoá học CPA (chi phí 1 đăng ký tư vấn) sẽ cao hơn service. Đừng nản — convert 1/5 đăng ký thành 1 học viên = đã bù chi phí.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p3-5">
+          <div class="task-content">
+            <div class="task-title">Tư vấn 5-10 lead → chốt 1-2 học viên cho lớp đầu</div>
+            <div class="task-desc">Mỗi lead đăng ký, gọi điện hoặc inbox tư vấn 15 phút: hỏi nhu cầu (tự makeup đi làm? đi tiệc? dạy con gái?), giới thiệu giáo trình phù hợp, gửi link đăng ký.</div>
+            <span class="task-week">Tuần 3-5</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Conversion rate khoá học thường thấp (10-20% từ tư vấn → chốt). Đừng buồn nếu lớp đầu chỉ có 1 người — focus vào quality để bạn ấy giới thiệu.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p3-6">
+          <div class="task-content">
+            <div class="task-title">Dạy lớp đầu tiên (5 buổi trong 4 tuần)</div>
+            <div class="task-desc">Lịch học: 1 buổi/tuần × 5 tuần (mỗi buổi 2-2.5 giờ). Có thể gộp 2-3 học viên cùng giờ nếu cùng lịch. Bắt đầu mỗi buổi: review buổi trước. Kết thúc: bài tập về nhà.</div>
+            <span class="task-week">Tuần 4-8</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Buổi 1 quyết định 80% trải nghiệm — chuẩn bị kỹ. Học viên hài lòng buổi 1 sẽ không bao giờ bỏ học.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p3-7">
+          <div class="task-content">
+            <div class="task-title">Chụp ảnh + quay video học viên trong các buổi</div>
+            <div class="task-desc">Mỗi buổi chụp 3-5 ảnh học viên đang thực hành + 1 video transformation. Đây là content marketing cho khoá tiếp theo (xin phép học viên trước).</div>
+            <span class="task-week">Tuần 4-8</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Tặng học viên file ảnh đẹp sau khoá học — họ post lên FB sẽ giới thiệu khoá cho bạn bè.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p3-8">
+          <div class="task-content">
+            <div class="task-title">Xin testimonial + video review học viên cuối khoá</div>
+            <div class="task-desc">Buổi cuối: phỏng vấn quay video 2-3 phút mỗi học viên: "Trước khoá bạn không biết gì? Sau 5 buổi bạn biết gì?". Video này là asset marketing quý giá.</div>
+            <span class="task-week">Tuần 8 (buổi cuối)</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Tặng học viên 1 set kit makeup nhỏ (~200k) làm quà cảm ơn cuối khoá — họ sẽ nhớ và giới thiệu nhiều hơn.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p3-9">
+          <div class="task-content">
+            <div class="task-title">Review giáo trình + pricing dựa trên feedback</div>
+            <div class="task-desc">Sau lớp đầu, hỏi học viên: buổi nào hay nhất? buổi nào dài quá / ngắn quá? giá có hợp lý? bạn có giới thiệu cho bạn bè không? Điều chỉnh giáo trình + pricing nếu cần.</div>
+            <span class="task-week">Tuần 8 (cuối phase)</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Lớp đầu là "phòng thí nghiệm" — đừng sợ thay đổi sau khoá đầu. Tốt hơn là sửa sau 1 lớp còn hơn sửa sau 10 lớp.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p3-10">
+          <div class="task-content">
+            <div class="task-title">Plan launch khoá tiếp theo + scale lên 2 khoá/tháng</div>
+            <div class="task-desc">Cuối phase 3: lên kế hoạch khoá tiếp theo (lịch, marketing, kênh tuyển sinh). Mục tiêu Phase 4: 2 khoá/tháng đều đặn = 6tr doanh thu/tháng từ training.</div>
+            <span class="task-week">Tuần 8 (cuối phase)</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> 2 khoá/tháng tận dụng tối đa MUA dạy (8-10 buổi/tháng) — không cần thêm người vẫn scale được.</div>
+          </div>
+        </label>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== PHASE 4 ================== -->
+<section class="phase" id="phase-4">
+  <div class="phase-header">
+    <div class="phase-number">PHASE 4</div>
+    <h2>Ramp đến break-even — 40 ca/tháng</h2>
+    <div class="phase-meta">
+      <span>📅 Tháng 10 — 12/2026</span>
+      <span>⏱ 12 tuần</span>
+      <span>🎯 Mục tiêu: Tháng 12 đạt 40 ca/tháng</span>
+    </div>
+    <div class="phase-progress">
+      <span><span id="p4-done">0</span> / <span id="p4-total">0</span></span>
+      <div class="bar"><div class="bar-fill" id="p4-bar"></div></div>
+      <span id="p4-pct">0%</span>
+    </div>
+  </div>
+  <div class="phase-body">
+
+    <div class="phase-section">
+      <h3>🎯 Mục tiêu giai đoạn</h3>
+      <div class="phase-goal">
+        Đẩy số ca service từ ~20-25 ca/tháng (sau Phase 2) lên 40 ca/tháng (target break-even). Tận dụng mùa cao điểm cưới Q4 (tháng 10-12 là peak). Nâng cấp hệ thống referral, hợp tác đối tác, và đo lường KPI hàng tuần. Tháng 12 phải đạt operational break-even.
+      </div>
+    </div>
+
+    <div class="phase-section">
+      <h3>✅ Deliverable cuối phase</h3>
+      <div class="phase-deliverable">
+        <strong>Phải đạt được cuối Phase 4:</strong>
+        • Tháng 12 đạt 40 ca service + 2 khoá học/tháng<br>
+        • Doanh thu tháng 12 ≥ 56 triệu (operational break-even)<br>
+        • Hệ thống referral hoạt động (≥ 30% khách mới đến từ giới thiệu)<br>
+        • Báo cáo tài chính tháng 12 chi tiết — sẵn sàng plan năm 2<br>
+        • Team đã ổn định, có quy trình chuẩn không phụ thuộc bạn 100%
+      </div>
+    </div>
+
+    <div class="phase-section">
+      <h3>📋 Việc cần làm (10 việc)</h3>
+      <div class="checklist">
+
+        <label class="task">
+          <input type="checkbox" id="p4-1">
+          <div class="task-content">
+            <div class="task-title">Setup hệ thống referral (giảm 10% cho khách giới thiệu)</div>
+            <div class="task-desc">Mỗi cô dâu sau ngày cưới nhận 1 voucher giảm 10% gói cô dâu cho người được giới thiệu. Tag voucher: "code [tên cô dâu cưới]". Khi voucher được dùng, cô dâu cũ nhận 200k tiền mặt cảm ơn.</div>
+            <span class="task-week">Tuần 1-2</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Referral là "vốn không lãi" — mỗi 1 cô dâu hài lòng = 2-3 cô dâu mới trong 6 tháng. Đầu tư 200k đẻ ra 1.5tr lãi.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p4-2">
+          <div class="task-content">
+            <div class="task-title">Đẩy mạnh hợp tác wedding planner — target 3-5 đơn/tháng từ kênh này</div>
+            <div class="task-desc">Họp với 3-5 wedding planner đã hợp tác từ Phase 2, đề xuất cam kết: tháng 11-12 ưu tiên cô dâu của họ (book sớm hơn), tăng hoa hồng lên 15% cho 5 đơn đầu/tháng.</div>
+            <span class="task-week">Tuần 1-3</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Q4 là mùa cưới đỉnh — wedding planner đang quá tải. Ai chốt được hợp tác cứng giai đoạn này = thắng lớn.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p4-3">
+          <div class="task-content">
+            <div class="task-title">Tăng tần suất content TikTok lên 5-7 video/tuần</div>
+            <div class="task-desc">Mùa cao điểm cưới (Q4), khách search "makeup cô dâu Hà Đông" cực nhiều. TikTok algo push studio active. 5-7 video/tuần là minimum để giữ traffic.</div>
+            <span class="task-week">Tuần 1-12 (đều đặn)</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Tận dụng video transformation cô dâu thật (xin phép trước). 1 video viral = 100-200 inbox/tuần.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p4-4">
+          <div class="task-content">
+            <div class="task-title">Chạy ads tháng 10-11 push mạnh, hạ về 6tr tháng 12</div>
+            <div class="task-desc">Theo Path A: M4-M5 marketing 8tr/tháng (tháng 10-11), M6 hạ xuống 6tr (tháng 12). Lý do hạ tháng 12: lúc đó referral đã đẻ ra khách đủ, không cần ads gấp.</div>
+            <span class="task-budget">Budget: 8tr/8tr/6tr cho 3 tháng</span>
+            <span class="task-week">Tuần 1-12</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Đo lường CAC mỗi tháng. Nếu CAC vẫn cao &gt; 300k/khách ở tháng 12, KHÔNG hạ marketing — giữ 8tr.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p4-5">
+          <div class="task-content">
+            <div class="task-title">Đo lường KPI hàng tuần — báo cáo cuối tuần</div>
+            <div class="task-desc">Mỗi thứ 2 đầu tuần: tổng kết tuần trước. Số liệu: Doanh thu • Số ca • Số khoá • CAC • AOV • NPS • Số inbox vs Số chốt. Gửi anh Quang để review xu hướng.</div>
+            <span class="task-week">Tuần 1-12 (mỗi tuần)</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Em có thể giúp build template báo cáo tuần — bảo anh Quang nói "tạo template weekly report cho bạn MUA".</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p4-6">
+          <div class="task-content">
+            <div class="task-title">Tuyển bổ sung 1 MUA freelance cho mùa cao điểm</div>
+            <div class="task-desc">Q4 + Q1 là mùa cưới đỉnh — 2 MUA hiện tại có thể không đủ. Tuyển 1 MUA freelance theo ca (cost 50% giá ca). Chỉ gọi khi có booking, không trả lương cứng.</div>
+            <span class="task-week">Tuần 4-6</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Freelance theo ca = backup linh hoạt + không tăng fixed cost. Đừng tuyển fulltime nếu chưa stable &gt; 60 ca/tháng.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p4-7">
+          <div class="task-content">
+            <div class="task-title">Nâng cấp pricing chiến lược cho 2027 (tăng 10-15%)</div>
+            <div class="task-desc">Sau 4 tháng vận hành, đã có brand + reputation. Đề xuất tăng giá Q1/2027: cô dâu ngày cưới 1.8tr → 2tr, ăn hỏi 1.5tr → 1.65tr. Khách book sớm trước khi tăng giá hưởng giá cũ.</div>
+            <span class="task-week">Tuần 8-10</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Thông báo tăng giá trước 30 ngày. Marketing message: "Giá hiện tại đến hết 31/12 — book ngay để giữ giá".</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p4-8">
+          <div class="task-content">
+            <div class="task-title">Chuẩn hoá toàn bộ SOP — không phụ thuộc bạn 100%</div>
+            <div class="task-desc">Audit lại 5 SOP: tiếp khách, makeup, touch-up, sale chốt, hậu mãi. Đảm bảo 1 nhân viên mới đến đọc 1 ngày là làm được. Bạn ấy giải phóng thời gian cho strategy, không vướng vào ops hàng ngày.</div>
+            <span class="task-week">Tuần 8-10</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Test SOP bằng cách nghỉ 3 ngày — nếu studio vẫn chạy ổn = SOP đã đủ. Nếu không, cần bổ sung.</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p4-9">
+          <div class="task-content">
+            <div class="task-title">Soạn báo cáo tài chính 12 tháng (cuối tháng 12)</div>
+            <div class="task-desc">Tổng kết: tổng doanh thu, tổng OPEX, lãi/lỗ, cumulative cashflow vs kế hoạch v3. So sánh actual vs plan. Highlight gap quan trọng.</div>
+            <span class="task-week">Tuần 11-12</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Báo cáo này là input cho plan năm 2 — đầu tư mở rộng dịch vụ mới? mở chi nhánh? launch khoá pro?</div>
+          </div>
+        </label>
+
+        <label class="task">
+          <input type="checkbox" id="p4-10">
+          <div class="task-content">
+            <div class="task-title">Họp tổng kết năm 1 với anh Quang — quyết định plan 2027</div>
+            <div class="task-desc">Cuối tháng 12: họp 2 giờ với anh Quang. Quyết định: (1) Mở khoá nâng cao? (2) Mở chi nhánh 2? (3) Tăng pricing? (4) Đầu tư paid ads mạnh hơn? Output: roadmap 12 tháng tiếp theo.</div>
+            <span class="task-week">Tuần 12 (cuối phase)</span>
+            <div class="task-tip"><strong>💡 Mẹo:</strong> Đừng ra quyết định lớn 1 mình. Anh Quang có 7 năm kinh nghiệm vận hành studio (Ngọt) — phản biện chắc chắn giúp bạn tránh sai lầm.</div>
+          </div>
+        </label>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== SỐ LIỆU KEY ================== -->
+<section id="numbers">
+  <h2 class="section-title">📊 Số liệu key — Bảng tham chiếu nhanh</h2>
+
+  <div class="phase">
+    <div class="phase-body">
+
+      <div class="phase-section">
+        <h3>Bảng giá dịch vụ (chốt v3)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Mã</th>
+              <th>Gói</th>
+              <th>Giá bán</th>
+              <th>Mục tiêu/tháng (M6)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>S01</td><td>Makeup cô dâu ngày cưới</td><td>1.800.000đ</td><td>12 ca</td></tr>
+            <tr><td>S02</td><td>Makeup cô dâu ăn hỏi</td><td>1.500.000đ</td><td>8 ca</td></tr>
+            <tr><td>S03</td><td>Makeup kỷ yếu / Tiệc</td><td>1.000.000đ</td><td>16 ca</td></tr>
+            <tr><td>S04</td><td>Makeup bà sui</td><td>1.000.000đ</td><td>4 ca</td></tr>
+            <tr><td>T01</td><td>Khoá makeup cá nhân (5 buổi)</td><td>3.000.000đ</td><td>2 khoá</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="phase-section">
+        <h3>Cấu trúc team & lương</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Vai trò</th>
+              <th>Lương cứng</th>
+              <th>Commission</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Bạn — QL chung + 50% ca + dạy 100% khoá</td><td>8tr/tháng</td><td>5% QL + 10% Makeup × 50% ca + 40% giá khoá</td></tr>
+            <tr><td>1 Sale + MUA</td><td>6-7tr/tháng</td><td>5% Sale + 10% Makeup × ca tự làm</td></tr>
+            <tr><td>1 MUA chuyên</td><td>5-6tr/tháng</td><td>10% Makeup × ca tự làm</td></tr>
+            <tr><td><strong>Tổng lương cứng</strong></td><td><strong>20tr/tháng</strong></td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="phase-section">
+        <h3>Vốn ban đầu cần huy động</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Nhóm</th>
+              <th>Số tiền</th>
+              <th>Ghi chú</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>A. CAPEX equipment</td><td>150.000.000đ</td><td>Thi công + bàn gương + ánh sáng + thiết bị + pháp lý</td></tr>
+            <tr><td>B. Cọc giữ MB</td><td>30.000.000đ</td><td>Refundable, hoàn lại cuối hợp đồng</td></tr>
+            <tr><td>C. Marketing branding</td><td>20.000.000đ</td><td>Logo + lookbook + video + landing</td></tr>
+            <tr><td><strong>Tổng vốn</strong></td><td><strong>200.000.000đ</strong></td><td>Vốn ban đầu cần huy động</td></tr>
+            <tr><td>Cushion bổ sung khuyến nghị</td><td>+50-100.000.000đ</td><td>Cho 6 tháng đầu lỗ ramp-up</td></tr>
+            <tr><td><strong>Tổng vốn an toàn</strong></td><td><strong>~300.000.000đ</strong></td><td>Đảm bảo không phá sản kịch bản BASE</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="phase-section">
+        <h3>Mục tiêu doanh thu theo tháng (BASE)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Tháng</th>
+              <th>Số ca service</th>
+              <th>Số khoá</th>
+              <th>Doanh thu</th>
+              <th>Lãi/lỗ tháng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>M1 (T7/2026)</td><td>15</td><td>0</td><td>20tr</td><td>-33tr</td></tr>
+            <tr><td>M3 (T9/2026)</td><td>30</td><td>0</td><td>40tr</td><td>-16tr</td></tr>
+            <tr><td>M6 (T12/2026) — TARGET</td><td><strong>40</strong></td><td>1</td><td>57tr</td><td>-2tr</td></tr>
+            <tr><td>M9 (T3/2027)</td><td>46</td><td>2</td><td>67tr</td><td>+6tr</td></tr>
+            <tr><td>M12 (T6/2027)</td><td>50</td><td>2</td><td>73tr</td><td>+11tr</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================== THUẬT NGỮ ================== -->
+<section id="glossary">
+  <h2 class="section-title">📖 Thuật ngữ — Đọc khi cần</h2>
+
+  <div class="phase">
+    <div class="phase-body">
+      <div class="glossary">
+
+        <div class="gloss-item">
+          <div class="gloss-term">CAPEX</div>
+          <div class="gloss-def">Chi phí đầu tư 1 lần — như tiền sửa mặt bằng, mua bàn gương, làm logo. Khác với chi phí hàng tháng (OPEX).</div>
+        </div>
+
+        <div class="gloss-item">
+          <div class="gloss-term">OPEX</div>
+          <div class="gloss-def">Chi phí vận hành hàng tháng — thuê MB, lương, điện nước, marketing, mỹ phẩm tiêu hao.</div>
+        </div>
+
+        <div class="gloss-item">
+          <div class="gloss-term">Break-even</div>
+          <div class="gloss-def">Điểm hoà vốn — số ca/tháng mà doanh thu = chi phí. Trên break-even = lãi, dưới = lỗ. Mục tiêu: 40 ca/tháng tại M6.</div>
+        </div>
+
+        <div class="gloss-item">
+          <div class="gloss-term">AOV (Average Order Value)</div>
+          <div class="gloss-def">Giá trung bình 1 đơn — với mix dịch vụ hiện tại = 1.34 triệu/ca.</div>
+        </div>
+
+        <div class="gloss-item">
+          <div class="gloss-term">CAC (Customer Acquisition Cost)</div>
+          <div class="gloss-def">Chi phí marketing để có 1 khách. Tính = Tổng marketing / Số khách mới. Mục tiêu: dưới 268.000đ/khách (20% AOV).</div>
+        </div>
+
+        <div class="gloss-item">
+          <div class="gloss-term">NPS (Net Promoter Score)</div>
+          <div class="gloss-def">Điểm hài lòng khách (1-10). NPS &gt; 8 = khách sẽ giới thiệu. Đo bằng cách hỏi: "Bạn có giới thiệu studio cho người khác không (1-10)?"</div>
+        </div>
+
+        <div class="gloss-item">
+          <div class="gloss-term">SOP (Standard Operating Procedure)</div>
+          <div class="gloss-def">Quy trình chuẩn — viết ra từng bước cho mỗi việc (tiếp khách, makeup, touch-up...). Có SOP = nhân viên mới đến cũng làm được.</div>
+        </div>
+
+        <div class="gloss-item">
+          <div class="gloss-term">CTV / Freelance</div>
+          <div class="gloss-def">Cộng tác viên makeup — gọi theo ca, ăn % giá bán (50-60%). Dùng cho overflow mùa cao điểm khi team chính không đủ.</div>
+        </div>
+
+        <div class="gloss-item">
+          <div class="gloss-term">HKDCT</div>
+          <div class="gloss-def">Hộ Kinh Doanh Cá Thể — pháp nhân đơn giản nhất, đăng ký tại UBND quận. Chi phí ~1tr. Phù hợp giai đoạn đầu, sau có thể chuyển công ty.</div>
+        </div>
+
+        <div class="gloss-item">
+          <div class="gloss-term">Lookbook</div>
+          <div class="gloss-def">Bộ ảnh mẫu chuyên nghiệp khoe tay nghề — dùng cho fanpage, website, ads. Khách thấy lookbook đẹp → tin tưởng inbox.</div>
+        </div>
+
+        <div class="gloss-item">
+          <div class="gloss-term">Touch-up</div>
+          <div class="gloss-def">Dặm lại makeup trong ngày — cô dâu giữ makeup 10-12 giờ cần dặm 1-2 lần. Đây là dịch vụ cô dâu rất quan tâm.</div>
+        </div>
+
+        <div class="gloss-item">
+          <div class="gloss-term">Referral</div>
+          <div class="gloss-def">Khách giới thiệu khách — kênh tăng trưởng RẺ NHẤT (CAC gần 0). Mục tiêu: 30% khách mới đến từ referral cuối Phase 4.</div>
+        </div>
+
+        <div class="gloss-item">
+          <div class="gloss-term">Lead</div>
+          <div class="gloss-def">Người đã thể hiện quan tâm (inbox, comment, đăng ký form) nhưng chưa chốt. Lead → Tư vấn → Cọc → Khách thật.</div>
+        </div>
+
+        <div class="gloss-item">
+          <div class="gloss-term">Pipeline</div>
+          <div class="gloss-def">Tổng số lead + khách đã book lịch sắp tới — "kho" doanh thu của tương lai. Pipeline càng dày càng yên tâm.</div>
+        </div>
+
+        <div class="gloss-item">
+          <div class="gloss-term">Cushion (đệm vốn)</div>
+          <div class="gloss-def">Tiền dự phòng ngoài CAPEX — phòng tháng đầu doanh thu chưa đủ trả OPEX. Khuyến nghị: 50-100tr cho 6 tháng đầu.</div>
+        </div>
+
+        <div class="gloss-item">
+          <div class="gloss-term">Mystery shopping</div>
+          <div class="gloss-def">Giả làm khách để thử dịch vụ đối thủ. Cách hiểu cạnh tranh cụ thể nhất — biết giá thực, quy trình, điểm yếu của họ.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="controls">
+  <button class="btn" onclick="exportProgress()">📥 Backup tiến độ</button>
+  <button class="btn btn-warn" onclick="resetProgress()">🔄 Reset hết</button>
+</div>
+
+<div class="toast" id="toast">✓ Đã lưu tiến độ</div>
+
+<script>
+const STORAGE_KEY = 'makeup_studio_progress_v1';
+
+function saveProgress() {
+  try {
+    const checked = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.id);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(checked));
+    showToast('✓ Đã lưu');
+  } catch(e) {
+    console.warn('localStorage not available:', e);
+  }
+}
+
+function loadProgress() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const checked = JSON.parse(saved);
+      checked.forEach(id => {
+        const cb = document.getElementById(id);
+        if (cb) cb.checked = true;
+      });
+    }
+  } catch(e) {
+    console.warn('localStorage not available:', e);
+  }
+}
+
+function updateProgress() {
+  const phases = ['p0', 'p1', 'p2', 'p3', 'p4'];
+  let totalDone = 0, totalAll = 0;
+
+  phases.forEach(p => {
+    const items = document.querySelectorAll(`input[id^="${p}-"]`);
+    const done = Array.from(items).filter(cb => cb.checked).length;
+    const all = items.length;
+    totalDone += done;
+    totalAll += all;
+
+    const doneEl = document.getElementById(`${p}-done`);
+    const totalEl = document.getElementById(`${p}-total`);
+    const barEl = document.getElementById(`${p}-bar`);
+    const pctEl = document.getElementById(`${p}-pct`);
+
+    if (doneEl) doneEl.textContent = done;
+    if (totalEl) totalEl.textContent = all;
+    if (barEl) barEl.style.width = all > 0 ? `${(done/all)*100}%` : '0%';
+    if (pctEl) pctEl.textContent = all > 0 ? `${Math.round((done/all)*100)}%` : '0%';
+  });
+
+  document.getElementById('overall-done').textContent = totalDone;
+  document.getElementById('overall-total').textContent = totalAll;
+  document.getElementById('overall-bar').style.width = totalAll > 0 ? `${(totalDone/totalAll)*100}%` : '0%';
+  document.getElementById('overall-pct').textContent = totalAll > 0 ? `${Math.round((totalDone/totalAll)*100)}%` : '0%';
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 1800);
+}
+
+function exportProgress() {
+  try {
+    const checked = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.id);
+    const data = {
+      version: '1.0',
+      timestamp: new Date().toISOString(),
+      total: document.querySelectorAll('input[type="checkbox"]').length,
+      done: checked.length,
+      checkedTasks: checked,
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `tien_do_studio_${new Date().toISOString().slice(0,10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('✓ Đã tải file backup');
+  } catch(e) {
+    alert('Lỗi xuất file: ' + e.message);
+  }
+}
+
+function resetProgress() {
+  if (confirm('Reset tất cả tiến độ? Hành động này không undo được. Khuyến nghị backup trước.')) {
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch(e) {}
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+    updateProgress();
+    showToast('✓ Đã reset');
+  }
+}
+
+// Init
+document.addEventListener('DOMContentLoaded', () => {
+  loadProgress();
+  updateProgress();
+
+  document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      saveProgress();
+      updateProgress();
+    });
+  });
+});
+</script>
+
+</body>
+</html>
